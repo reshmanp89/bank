@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url("./assets/pngtree-fresh-bank-card-machine-advertising-background-backgroundblue-backgroundmanmoneyhand-paintedatmsimplemachine-image_83842.jpg");
+    background-size: cover;
+    margin: 0;
+}
+header{
+    height: 50px;
+    background-color: rgb(64, 83, 167);
+    color: white;
+}
+footer{
+    height: 60px;
+    color: white;
+    background-color: rgb(64, 83, 167);
+    position: fixed;
+    bottom:0;
+    width: 100%;
+}
