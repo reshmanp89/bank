@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,9 @@ export class LoginComponent {
     1003:{username:"reshma",acno:1000,password:"123",balance:0},
     1004:{username:"anu",acno:1000,password:"123",balance:0}
   }
+  constructor(private router:Router){
+
+  }
   login()
 {
   //alert("login worked")
@@ -30,6 +34,10 @@ export class LoginComponent {
    {
     if(psw==userDetails[acnum]["password"]){//here acnum is a variable so the not use " "
        alert("login success")
+       // redirection
+       this.router.navigateByUrl("dashboard")
+
+
     }
     else{
       alert("incorrect password")
