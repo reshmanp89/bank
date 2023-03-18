@@ -123,7 +123,10 @@ reactive form
 
         LOCAL STORAGE IN Angular
         --------------------------------------------
-
+   C  localStorage.setItem()
+   R  localStorage.getItem()
+   U  localStorage.setItem()
+   D  localStorage.removeItem() 
          
 
 
