@@ -4,14 +4,24 @@
 </div>
 
 <h1 class="text-center mt-5 p-5" style="color:  rgb(188, 219, 12);">Sign in</h1>
-<form action="" class="mt-5 p-3 container w-50 text-center" style="background-color: rgba(77, 156, 192, 0.747);">
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="mt-5 p-3 container w-25 text-center" style="background-color: rgba(77, 156, 192, 0.747);">
     <div class="mt-3 p-2">
-        <input [(ngModel)]="acno" id="u1" name="uname"type="text" class="form-control mt-2 p-2" [placeholder]="data1">
+        <input  formControlName="acno" id="u1" name="uname"type="text" class="form-control mt-2 p-2" [placeholder]="data1">
+    </div>
+    <div *ngIf="this.loginForm.get('acno')?.errors&&this.loginForm.get('acno')?.touched" class="text-danger text-start ms-3">
+        <p>
+            contain only numbers
+        </p>
     </div>
     <div class="mt-3 p-2">
-        <input [(ngModel)]="psw" id="p1" name="password"type="text" class="form-control mt-2 p-2" placeholder="enter password">
+        <input  formControlName="psw" id="p1" name="password"type="text" class="form-control mt-2 p-2" placeholder="enter password">
     </div>
-    <button (click)="login()"class="mt-3 p-2 btb btn-light border-0"> login</button>
+    <div *ngIf="this.loginForm.get('psw')?.errors&&this.loginForm.get('psw')?.touched" class="text-danger text-start ms-3">
+        <p>
+            contain numbers  nad characters
+        </p>
+    </div>
+    <button type="submit"class="mt-3 p-2 btb btn-light border-0"> login</button>
     <p  class="mt-2 text-white">Dont have account?
         <a style="text-decoration: none;" routerLink="register">create account</a></p>
 </form>

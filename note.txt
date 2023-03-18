@@ -87,5 +87,49 @@ in constructor
 
 
 
+     angular services
+     ==============================
+      its a file in angular 
+      all compol=nents can access the content of service file
+
+      create----------- ng g s filename
+
+
+angular directives
+------------------------
+used to manipulate DOM
+1.component directives
+2.structural directives
+    *ngFor   loop creation
+    *ngIf    codition kodukan
+3.   
+
+Form validation in Angular
+---------------------------------
+    1.template driven form
+    2.model driven form
+
+
+Model Driven form
+--------------------------
+reactive form
+    ReactiveFormsModule---module used to build model form
+
+      a model contains
+      ---------------------------
+        1-form group
+        2-array
+        3-controller
+
+        LOCAL STORAGE IN Angular
+        --------------------------------------------
+
+         
+
+
+
+
+
+
 
 

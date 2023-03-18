@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -11,41 +13,52 @@ export class LoginComponent {
   data1="enter your ac no"
  // acno=""  varaible declaration
  //or
- acno:any
- psw:any
-  userDetails:any={//database name
-    1000:{username:"anu",acno:1000,password:"123",balance:0}, //object ,key is account number
-    1001:{username:"amal",acno:1001,password:"123",balance:0},
-    1002:{username:"bipin",acno:1000,password:"123",balance:0},
-    1003:{username:"reshma",acno:1000,password:"123",balance:0},
-    1004:{username:"anu",acno:1000,password:"123",balance:0}
-  }
-  constructor(private router:Router){
+ 
+  // userDetails:any={//database name
+  //   1000:{username:"anu",acno:1000,password:"123",balance:0}, //object ,key is account number
+  //   1001:{username:"amal",acno:1001,password:"123",balance:0},
+  //   1002:{username:"bipin",acno:1000,password:"123",balance:0},
+  //   1003:{username:"reshma",acno:1000,password:"123",balance:0},
+  //   1004:{username:"anu",acno:1000,password:"123",balance:0}
+  // }
+  constructor(private router:Router,private ds:DataService,private fb:FormBuilder){
 
   }
+  loginForm=this.fb.group(
+    {
+      
+      
+      acno:['',[Validators.required,Validators.pattern('[0-9]+')]],
+      
+      psw:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]+')]]
+    }
+  )
   login()
 {
   //alert("login worked")
-    var acnum=this.acno
-    var userDetails=this.userDetails
-    var psw=this.psw
-
-   if(acnum in userDetails)
-   {
-    if(psw==userDetails[acnum]["password"]){//here acnum is a variable so the not use " "
-       alert("login success")
-       // redirection
-       this.router.navigateByUrl("dashboard")
-
+    var acnum=this.loginForm.value.acno
+    
+    var psw=this.loginForm.value.psw
+    if(this.loginForm.valid)
+    {
+      const result=this.ds.login(acnum,psw)
+    if(result)
+    {
+      alert("login successfully")
+      this.router.navigateByUrl("dashboard")
 
     }
     else{
-      alert("incorrect password")
+      alert("incorrect acno or pasword")
     }
-   }
-   else{
-    alert('incorrect acnum')
-   }
+
+    }
+    else{
+      alert('invalid form')
+    }
+    
+
+   
 }
 
 // acnoChange(event:any)
