@@ -1,9 +1,20 @@
-<h2 class="mt-4 p-2" style="color: rgb(14, 14, 109)">Welcome  {{user}}</h2>
-<div class="mt-5 p-3  text-center container w-25" style="background-color: rgba(77, 156, 192, 0.747);border-radius: 40px;">
+<div class="text-warning ms-3 p-2">
+    <p>{{date | date:"medium"}}</p>
+</div>
+<h2 class="mt-3 p-2" style="color: rgb(14, 14, 109)">Welcome  {{user}}</h2>
+<div class="me-3 p-2  text-end container w-25">
+    <button (click)="logout()"class="mt-3 p-2 btn btn-info border-0 text-white">Logout</button>
+</div>
+<div class="me-3 p-2  text-end container w-25">
+    <button (click)="deleteAcc()"class="mt-3 p-2 btn btn-primary border-0 text-white">Delete</button>
+</div>
+<app-delete [Item]="acno"></app-delete>
+
+<div [ngClass]="acno?'s1':''" class="mt-3 p-3  text-center container w-25" style="background-color: rgba(77, 156, 192, 0.747);border-radius: 40px;">
     <a style="color:white;text-decoration: none;" routerLink="/transaction">View Transaction Details</a>
 </div>
 <!-- acno psw -->
-<div class="row">
+<div class="row" [ngClass]="acno?'s1':''" >
     <div class="col-6 p-3">
         <form [formGroup]="depositForm"action="" class="mt-5 p-3  text-center container w-50" style="background-color: rgba(77, 156, 192, 0.747)">
             <h2 style="color: rgb(14, 14, 109)">Deposit</h2>

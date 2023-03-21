@@ -6,14 +6,18 @@ import { Injectable } from '@angular/core';
 export class DataService {
   currentUser:any
   currentAcno:any
-  userDetails:any={//database name
-    1000:{username:"anu",acno:1000,password:"123",balance:0,transactions:[]}, //object ,key is account number
-    1001:{username:"amal",acno:1001,password:"123",balance:0,transactions:[]},
-    1002:{username:"bipin",acno:1002,password:"123",balance:0,transactions:[]},
-    1003:{username:"reshma",acno:1003,password:"123",balance:0,transactions:[]},
-    1004:{username:"anu",acno:1004,password:"123",balance:0,transactions:[]}
+  userDetails:any
+  // userDetails:any={//database name
+  //   1000:{username:"anup",acno:1000,password:"123",balance:0,transactions:[]}, //object ,key is account number
+  //   1001:{username:"amal",acno:1001,password:"123",balance:0,transactions:[]},
+  //   1002:{username:"bipin",acno:1002,password:"123",balance:0,transactions:[]},
+  //   1003:{username:"reshma",acno:1003,password:"123",balance:0,transactions:[]},
+  //   1004:{username:"anusree",acno:1004,password:"123",balance:0,transactions:[]}
+  // }
+  constructor() { 
+    this.getDetails()
   }
-  constructor() { }
+  
   saveDetails()
   {
     if(this.userDetails)
@@ -29,7 +33,21 @@ export class DataService {
       localStorage.setItem("currentAcno",JSON.stringify(this.currentAcno))
     }
   }
-  
+  getDetails()
+  {
+    if(localStorage.getItem("userDetails"))
+    {
+      this.userDetails=JSON.parse(localStorage.getItem("userDetails") || "")
+    }
+    if(localStorage.getItem("currentUser"))
+    {
+      this.currentUser=localStorage.getItem("currentUser")
+    }
+    if(localStorage.getItem("currentAcno"))
+    {
+      this.currentUser=JSON.parse(localStorage.getItem("currentAcno") || "")
+    }
+  }
   register(acno:any,uname:any,psw:any)
   {
     var  userDetails=this.userDetails
